@@ -15,7 +15,7 @@ cache:
 build:
   stage: build
   image: registry.gitlab.com/chuckaude/hello-java/devbox
-  script: mvn $MAVEN_CLI_OPTS compile
+  script: mvn $MAVEN_CLI_OPTS clean compile
 
 test:
   stage: test
