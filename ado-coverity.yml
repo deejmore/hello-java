@@ -1,8 +1,8 @@
 name: $(Date:yyyyMMdd).$(Rev:.r)
 variables:
-  cov.authkey: 'c:/tools/coverity/analysis/commit-authkey'
-  cov.bin: 'c:/tools/coverity/analysis/2019.12/bin'
-  cov.host: 'localhost'
+  cov.authkey: '/Users/deejmore/synopsys/coverity/access-tokens/commit-authkey'
+  cov.bin: '/Users/deejmore/synopsys/coverity/cov-analysis-macosx-2019.12/bin'
+  cov.host: '192.168.56.1010'
   cov.idir: '$(Build.SourcesDirectory)/idir'
   cov.stream: 'hello-java'
 
