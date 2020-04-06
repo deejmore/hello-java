@@ -9,8 +9,7 @@ variables:
 jobs:
 - job: Coverity
   pool:
-    name: private-windows
-  workspace:
+    name: private-mac
     clean: all
   steps:
   - task: CmdLine@2
