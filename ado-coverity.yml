@@ -9,7 +9,7 @@ variables:
 jobs:
 - job: Coverity
   pool:
-    name: private-mac
+    name: private-linux
     clean: all
   steps:
   - task: CmdLine@2
