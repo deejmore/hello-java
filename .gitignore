@@ -3,4 +3,9 @@
 .project
 .settings
 .svn
+.synopsys/
+.gradle/
 target
+build
+gradle
+.polaris-coverity.zip
