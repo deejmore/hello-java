@@ -1,13 +1,12 @@
-name: $(Date:yyyyMMdd).$(Rev:.r)
 jobs:
 - job: Build
   pool:
-    name: private-windows
+    vmImage: vs2017-win2016
   workspace:
     clean: all
   steps:
   - task: Maven@3
     inputs:
       mavenPomFile: 'pom.xml'
-      goals: 'package'
+      goals: 'package -DskipTests'
       publishJUnitResults: false
