@@ -21,9 +21,7 @@ steps:
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
 
-- task: SynopsysDetectTask@2
+- task: Bash@3
   inputs:
-    Products: 'BD'
-    BlackDuckService: 'poc188-blackduck'
-    DetectVersion: 'latest'
-    DetectArguments: '-de --detect.project.name=hello-java --detect.project.version.name=master'
+    targetType: 'inline'
+    script: 'bash <(curl -s -L https://detect.synopsys.com/detect.sh) --blackduck.url=https://poc188.blackduck.synopsys.com/ --blackduck.api.token=NWNhMzk4ZDktNWYxMy00NzZiLWI5YmQtMzI2YTA5ZThkOWE4OjFjYjVkZDVlLWEzMWQtNGZjOS1hOTg0LTVkZTE0Njk0ODgxMg==  --blackduck.trust.cert=true --detect.project.name=hello-java --detect.project.version.name=master'
