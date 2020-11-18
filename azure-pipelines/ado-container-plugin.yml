@@ -1,0 +1,30 @@
+pool:
+  vmImage: ubuntu-latest
+
+container:
+  image: coverity-linux64-2020.09
+  endpoint: acr-chuckaude
+
+variables:
+- group: coverity-azure
+- name: COVERITY_TOOL_HOME
+  value: /opt/coverity/analysis/2020.09
+- name: COVERITY_PROJECT
+  value: hello-java
+
+steps:
+- task: synopsys-coverity.synopsys-coverity-azure-devops.coverity-task.synopsys-coverity@1
+  displayName: 'Coverity Analysis'
+  inputs:
+    coverityService: 'coverity-azure'
+    projectName: '$(COVERITY_PROJECT)'
+    streamName: '$(COVERITY_PROJECT)-$(Build.SourceBranchName)'
+    checkIssues: true
+    issueView: 'Newly Detected Issues'
+    issueStatus: 'unstable'
+    buildCommand: 'mvn -B package -DskipTests'
+    customCommandArgs: true
+    covBuildArgs: '--fs-capture-search $(Build.SourcesDirectory)'
+    covAnalyzeArgs: '--ticker-mode none --strip-path $(Build.SourcesDirectory) --webapp-security'
+    covCommitArgs: '--ticker-mode none --description $(Build.BuildURI) --version $(Build.SourceVersion) --scm git'
+    allowUntrusted: true
