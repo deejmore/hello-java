@@ -10,3 +10,4 @@ idir
 build
 gradle
 .polaris-coverity.zip
+cov-run-desktop.log
